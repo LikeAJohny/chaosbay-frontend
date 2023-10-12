@@ -1,20 +1,16 @@
-module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
-  },
-  purge: ['./src/**/*.html', './src/**/*.js'],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    fontFamily: {
-      rubik: ['rubik', 'helvetica', 'sans-serif'],
-      raleway: ['raleway', 'sans-serif'],
+    extend: {
+      colors: {
+        'primary-color': 'var(--primary-color)',
+        'secondary-color': 'var(--secondary-color)',
+      },
+      textUnderlineOffset: {
+        12: '12px',
+      },
     },
-  },
-  variants: {
-    animation: ['responsive', 'hover'],
-    borderStyle: ['responsive', 'hover'],
-    borderWidth: ['responsive', 'hover'],
-    opacity: ['focus-visible'],
   },
   plugins: [],
 };

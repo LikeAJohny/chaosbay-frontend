@@ -1,0 +1,67 @@
+---
+import TicketLink from './TicketLink.astro';
+
+interface Props {
+  name: string;
+  location: string;
+  date: string;
+  ticketLink: string;
+}
+
+const { name, location, date, ticketLink } = Astro.props;
+const [year, month, day] = date.split('-');
+---
+
+<li
+  class="my-6 grid h-20 w-full justify-between text-gray-800 grid-cols-[5rem_1fr] hover:bg-gray-800 hover:text-amber-50"
+>
+  <a
+    href="/"
+    class="grid aspect-square w-20 auto-rows-fr justify-center justify-items-center px-2 text-center border-r border-dashed border-gray-800"
+  >
+    <div class="grid items-center border-b border-gray-600 text-xl">
+      {day}.{month}.
+    </div>
+    <div class="grid items-center text-sm">{year}</div>
+  </a>
+  <a href="/" class="grid auto-rows-fr px-3 text-left">
+    <div class="grid items-center border-b border-gray-600 text-xl">
+      {name}
+    </div>
+    <div class="flex justify-between">
+      <div class="grid items-center text-sm">{location}</div>
+      <div class="grid items-center text-sm">Buy Tickets &rarr;</div>
+    </div>
+  </a>
+</li>
+
+<style lang="css">
+  li {
+    background-size: 100% 51%;
+    background-position: top, bottom;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(
+        circle at 5rem 3%,
+        rgba(255, 255, 224, 0) 0.4em,
+        #ffffe0 0.5em
+      ),
+      radial-gradient(
+        circle at 5rem 97%,
+        rgba(255, 255, 224, 0) 0.4em,
+        #ffffe0 0.5em
+      );
+  }
+
+  li:hover {
+    background-image: radial-gradient(
+        circle at 5rem 3%,
+        rgba(255, 255, 224, 0) 0.4em,
+        var(--primary-color) 0.5em
+      ),
+      radial-gradient(
+        circle at 5rem 97%,
+        rgba(255, 255, 224, 0) 0.4em,
+        var(--primary-color) 0.5em
+      );
+  }
+</style>

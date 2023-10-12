@@ -1,7 +1,9 @@
 {
-  "name": "astro",
+  "name": "chaosbay-frontend",
   "type": "module",
-  "version": "0.0.1",
+  "description": "Frontend of the Chaosbay Website",
+  "author": "Jonas Kemmer <likeajohny@users.noreply.github.com>",
+  "version": "2.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,8 +14,11 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@astrojs/tailwind": "^5.0.1",
     "@sanity/client": "^6.4.12",
-    "astro": "^3.2.2"
+    "@sanity/image-url": "^1.0.2",
+    "astro": "^3.2.3",
+    "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^6.7.4",

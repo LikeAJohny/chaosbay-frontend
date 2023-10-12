@@ -1,0 +1,21 @@
+---
+import { getAnnouncements } from '@api/queries';
+import { desktopImage } from '../lib/image-url';
+import Button from './Button.astro';
+import SectionHeading from './SectionHeading.astro';
+
+const announcement = (await getAnnouncements())[0];
+---
+
+<section id="announcement">
+  <div class="grid md:grid-cols-2 gap-4 text-center md:text-left">
+    <div>
+      <img src={desktopImage(announcement.image)} alt="Ecstasy" />
+    </div>
+    <div class="grid items-center justify-center">
+      <SectionHeading>{announcement.heading}</SectionHeading>
+      <p class="text-amber-50">{announcement.text}</p>
+      <Button>Listen</Button>
+    </div>
+  </div>
+</section>
