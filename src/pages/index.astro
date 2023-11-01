@@ -3,7 +3,9 @@ import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
 import Announcement from '@components/Announcement.astro';
 import Shows from '@components/Shows.astro';
-import { getSettings } from '../api/queries';
+import { getSettings } from '@api/queries';
+import Videos from '@components/Videos.astro';
+import Merch from '../components/Merch.astro';
 
 const settings = await getSettings();
 ---
@@ -15,9 +17,12 @@ const settings = await getSettings();
 >
   <Header />
   <main class="grid justify-center py-8">
+    <div class="h-16"></div>
     <div class="max-w-3xl grid gap-8">
       <Announcement />
       <Shows />
+      <Videos />
+      <Merch />
     </div>
   </main>
 </Layout>

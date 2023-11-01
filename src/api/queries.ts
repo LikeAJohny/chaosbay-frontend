@@ -1,6 +1,7 @@
 import { sanityClient } from './client.ts';
-import type { Show } from '../types/show.ts';
-import type { Single } from '../types/single.ts';
+import type { ShowsSchema } from '@/types/shows.schema.ts';
+import type { AnnouncementsSchema } from '@/types/announcements.schema.ts';
+import type { VideosSchema } from '@/types/videos.schema.ts';
 
 export async function getSettings() {
   const query = `*[_type == 'settings']`;
@@ -8,14 +9,20 @@ export async function getSettings() {
   return await sanityClient.fetch(query);
 }
 
-export async function getAnnouncements() {
+export async function getAnnouncements(): Promise<AnnouncementsSchema> {
   const query = `*[_type == 'announcement']`;
 
   return await sanityClient.fetch(query);
 }
 
 export async function getShows() {
-  const query = `*[_type == 'shows'] | order(date asc)`;
+  const query = `*[_type == 'shows'] | order(date desc)`;
 
-  return await sanityClient.fetch<Show[]>(query);
+  return await sanityClient.fetch<ShowsSchema[]>(query);
+}
+
+export async function getVideos(): Promise<VideosSchema> {
+  const query = `*[_type == 'videos']`;
+
+  return await sanityClient.fetch(query);
 }

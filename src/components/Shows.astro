@@ -1,22 +1,18 @@
 ---
-import { getShows } from '../api/queries';
+import { getShows } from '@api/queries';
 import SectionHeading from './SectionHeading.astro';
 import Show from './Show.astro';
 
-const shows = (await getShows()).filter((show) => {
-  const showDate = new Date(show.date);
-  const now = new Date();
+console.log(await getShows());
 
-  // ToDo: swap once styling is done
-  return showDate < now;
-});
+const shows = (await getShows())[0];
 ---
 
 <section id="shows">
   <div class="grid px-4">
-    <SectionHeading>Shows</SectionHeading>
+    <SectionHeading>{shows.headline}</SectionHeading>
     <ul class="text-white w-full list-none">
-      {shows.map((show) => <Show {...show} />)}
+      {shows.shows.map((show) => <Show {...show} />)}
     </ul>
   </div>
 </section>
