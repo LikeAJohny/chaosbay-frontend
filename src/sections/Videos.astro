@@ -1,6 +1,6 @@
 ---
-import { getVideos } from '@api/queries';
-import SectionHeading from './SectionHeading.astro';
+import { getVideos } from '../api/queries';
+import SectionHeading from '../components/SectionHeading.astro';
 
 const videos = (await getVideos())[0];
 ---

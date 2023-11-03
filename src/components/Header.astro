@@ -1,5 +1,8 @@
 ---
 import Button from './Button.astro';
+import { desktopImage } from '../lib/image-url';
+
+const { logo, lettering } = Astro.props;
 ---
 
 <script>
@@ -10,21 +13,20 @@ import Button from './Button.astro';
   });
 </script>
 
-<nav
-  class="fixed z-50 w-full border-gray-200 bg-gradient-to-r to-gray-800 from-primary-color via-secondary-color"
->
+<nav class="bg-black fixed z-50 w-full border-gray-200">
   <div
     class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
   >
     <a href="/" class="flex items-center">
-      <img src="/mini-circle.png" class="mr-3 h-8" alt="Chaosbay Logo" />
-      <span
-        class="self-center whitespace-nowrap text-2xl font-semibold uppercase text-white"
-        >Chaosbay</span
-      >
+      <img src={desktopImage(logo)} class="mr-3 h-8" alt="Chaosbay Logo" />
+      <img
+        src={desktopImage(lettering)}
+        class="mr-3 h-8"
+        alt="Chaosbay Lettering"
+      />
     </a>
     <div class="flex md:order-2">
-      <Button>Newsletter</Button>
+      <!--<Button>Newsletter</Button>-->
       <button
         data-collapse-toggle="navbar-cta"
         type="button"

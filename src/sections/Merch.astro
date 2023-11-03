@@ -1,0 +1,22 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import { getMerch } from '../api/queries';
+import { desktopImage } from '../lib/image-url';
+import Button from '../components/Button.astro';
+
+const schema = (await getMerch())[0];
+---
+
+<section id="merch">
+  <div class="grid px-4">
+    <SectionHeading>Merch</SectionHeading>
+    <div class="grid md:grid-cols-[repeat(2,50%)] gap-4 my-4">
+      {schema.merchItems.map((item) => (
+        <div>
+          <img src={desktopImage(item.image)} alt={item.name} class="mb-4" />
+          <Button class="w-full">Shop Now</Button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

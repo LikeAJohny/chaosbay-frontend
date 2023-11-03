@@ -1,11 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
-import Announcement from '@components/Announcement.astro';
-import Shows from '@components/Shows.astro';
+import Announcement from '../sections/Announcement.astro';
+import Shows from '../sections/Shows.astro';
 import { getSettings } from '@api/queries';
-import Videos from '@components/Videos.astro';
-import Merch from '../components/Merch.astro';
+import Videos from '../sections/Videos.astro';
+import Merch from '../sections/Merch.astro';
+import Contact from '../sections/Contact.astro';
 
 const settings = await getSettings();
 ---
@@ -15,7 +16,7 @@ const settings = await getSettings();
   primaryColor={settings[0].primaryColor.hex}
   secondaryColor={settings[0].secondaryColor.hex}
 >
-  <Header />
+  <Header logo={settings[0].logo} lettering={settings[0].lettering} />
   <main class="grid justify-center py-8">
     <div class="h-16"></div>
     <div class="max-w-3xl grid gap-8">
@@ -23,6 +24,7 @@ const settings = await getSettings();
       <Shows />
       <Videos />
       <Merch />
+      <Contact />
     </div>
   </main>
 </Layout>
