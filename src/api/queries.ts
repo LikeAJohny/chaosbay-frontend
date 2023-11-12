@@ -1,10 +1,11 @@
-import { sanityClient } from './client.ts';
-import type { ShowsSchema } from '@/types/shows.schema.ts';
-import type { AnnouncementsSchema } from '@/types/announcements.schema.ts';
-import type { VideosSchema } from '@/types/videos.schema.ts';
-import type { MerchSchema } from '@/types/merch.schema.ts';
+import { sanityClient } from "./client.ts";
+import type { ShowsSchema } from "@/types/shows.schema.ts";
+import type { AnnouncementsSchema } from "@/types/announcements.schema.ts";
+import type { VideosSchema } from "@/types/videos.schema.ts";
+import type { MerchSchema } from "@/types/merch.schema.ts";
+import type { SettingsSchema } from "@/types/settings.schema.ts";
 
-export async function getSettings() {
+export async function getSettings(): Promise<SettingsSchema[]> {
   const query = `*[_type == 'settings']`;
 
   return await sanityClient.fetch(query);

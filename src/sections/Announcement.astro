@@ -1,21 +1,22 @@
 ---
-import { getAnnouncements } from '../api/queries';
-import Button from '../components/Button.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import { desktopImage } from '../lib/image-url';
+import { getAnnouncements } from "../api/queries";
+import Button from "../components/Button.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { desktopImage } from "../lib/image-url";
+import Section from "../components/Section.astro";
 
 const announcement = (await getAnnouncements())[0];
 ---
 
-<section id="announcement">
-  <div class="grid md:grid-cols-2 gap-4 px-4">
+<Section id="announcement">
+  <div class="grid gap-4">
+    <img src={desktopImage(announcement.image)} alt="Announcement Image" />
     <div>
-      <img src={desktopImage(announcement.image)} alt="Ecstasy" />
-    </div>
-    <div class="grid gap-4">
       <SectionHeading>{announcement.heading}</SectionHeading>
       <p class="text-amber-50">{announcement.text}</p>
+    </div>
+    <div class="flex justify-end">
       <Button>Announcement Link &rarr;</Button>
     </div>
   </div>
-</section>
+</Section>

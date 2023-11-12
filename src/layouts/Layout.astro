@@ -1,5 +1,5 @@
 ---
-import Background from '../components/Background.astro';
+import Background from "../components/Background.astro";
 interface Props {
   title: string;
   primaryColor: string;
@@ -10,7 +10,7 @@ const { title, primaryColor, secondaryColor } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-gray-900 bg-opacity-95">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -18,8 +18,11 @@ const { title, primaryColor, secondaryColor } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script
+      src="https://kit.fontawesome.com/162ec1a8cf.js"
+      crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body class="font-body">
     <Background />
     <slot />
   </body>
@@ -27,8 +30,8 @@ const { title, primaryColor, secondaryColor } = Astro.props;
 <style
   is:global
   define:vars={{
-    'primary-color': primaryColor,
-    'secondary-color': secondaryColor,
+    "primary-color": primaryColor,
+    "secondary-color": secondaryColor,
   }}
 >
   :root {
@@ -37,15 +40,19 @@ const { title, primaryColor, secondaryColor } = Astro.props;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(
       45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
+      var(--secondary-color),
+      var(--primary-color) 30%,
       white 60%
     );
   }
 
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
+  @font-face {
+    font-family: "Bebas Neue";
+    src: url("../assets/fonts/BebasNeue-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "Roboto Regular";
+    src: url("../assets/fonts/Roboto-Regular.ttf");
   }
 </style>

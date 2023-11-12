@@ -1,7 +1,8 @@
 ---
-import { getShows } from '../api/queries';
-import SectionHeading from '../components/SectionHeading.astro';
-import Show from '../components/Show.astro';
+import { getShows } from "../api/queries";
+import SectionHeading from "../components/SectionHeading.astro";
+import Show from "../components/Show.astro";
+import Section from "../components/Section.astro";
 
 const today = new Date();
 const schema = (await getShows())[0];
@@ -10,38 +11,39 @@ const passed = schema.shows.filter((show) => new Date(show.date) < today);
 ---
 
 <script>
-  const upcomingList = document.querySelector('[data-upcoming-list]');
-  const upcomingTab = document.querySelector('[data-upcoming-tab]');
-  const passedList = document.querySelector('[data-passed-list]');
-  const passedTab = document.querySelector('[data-passed-tab]');
+  const upcomingList = document.querySelector("[data-upcoming-list]");
+  const upcomingTab = document.querySelector("[data-upcoming-tab]");
+  const passedList = document.querySelector("[data-passed-list]");
+  const passedTab = document.querySelector("[data-passed-tab]");
 
-  upcomingTab.addEventListener('click', () => {
-    upcomingList.classList.remove('sr-only');
-    upcomingTab.classList.add('text-primary-color');
-    passedList.classList.add('sr-only');
-    passedTab.classList.remove('text-primary-color');
-  })
+  upcomingTab.addEventListener("click", () => {
+    upcomingList.classList.remove("hidden");
+    upcomingTab.classList.add("text-primary-color");
+    passedList.classList.add("hidden");
+    passedTab.classList.remove("text-primary-color");
+  });
 
-  passedTab.addEventListener('click', () => {
-    passedList.classList.remove('sr-only');
-    passedTab.classList.add('text-primary-color');
-    upcomingList.classList.add('sr-only');
-    upcomingTab.classList.remove('text-primary-color');
-  })
+  passedTab.addEventListener("click", () => {
+    passedList.classList.remove("hidden");
+    passedTab.classList.add("text-primary-color");
+    upcomingList.classList.add("hidden");
+    upcomingTab.classList.remove("text-primary-color");
+  });
 </script>
 
-<section id="shows">
-  <div class="grid px-4">
-    <SectionHeading>{schema.headline}</SectionHeading>
-    <div class="my-4 flex text-amber-50 gap-4 cursor-pointer mt-4">
-      <h2 data-upcoming-tab class="text-primary-color">Upcoming</h2>
-      <h2 data-passed-tab>Passed</h2>
-    </div>
-    <ul data-upcoming-list class="text-white w-full list-none grid md:grid-cols-[repeat(2,50%)] gap-4">
-      {upcoming.map((show) => <Show {...show} />)}
-    </ul>
-    <ul data-passed-list class="text-white w-full list-none sr-only">
-      {passed.map((show) => <Show {...show} />)}
-    </ul>
+<Section id="shows">
+  <SectionHeading>{schema.headline}</SectionHeading>
+  <div class="mb-4 flex cursor-pointer gap-4 text-amber-50">
+    <h2 data-upcoming-tab class="text-primary-color">Upcoming</h2>
+    <h2 data-passed-tab>Passed</h2>
   </div>
-</section>
+  <ul
+    data-upcoming-list
+    class="text-white w-full list-none grid md:grid-cols-[repeat(2,49%)] gap-4"
+  >
+    {upcoming.map((show) => <Show {...show} />)}
+  </ul>
+  <ul data-passed-list class="hidden w-full list-none text-white">
+    {passed.map((show) => <Show {...show} />)}
+  </ul>
+</Section>

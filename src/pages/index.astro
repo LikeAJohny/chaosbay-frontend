@@ -1,12 +1,13 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
-import Announcement from '../sections/Announcement.astro';
-import Shows from '../sections/Shows.astro';
-import { getSettings } from '@api/queries';
-import Videos from '../sections/Videos.astro';
-import Merch from '../sections/Merch.astro';
-import Contact from '../sections/Contact.astro';
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Announcement from "../sections/Announcement.astro";
+import Shows from "../sections/Shows.astro";
+import { getSettings } from "@api/queries";
+import Videos from "../sections/Videos.astro";
+import Merch from "../sections/Merch.astro";
+import Contact from "../sections/Contact.astro";
+import Footer from "../sections/Footer.astro";
 
 const settings = await getSettings();
 ---
@@ -17,9 +18,8 @@ const settings = await getSettings();
   secondaryColor={settings[0].secondaryColor.hex}
 >
   <Header logo={settings[0].logo} lettering={settings[0].lettering} />
-  <main class="grid justify-center py-8">
-    <div class="h-16"></div>
-    <div class="max-w-3xl grid gap-8">
+  <main class="py-16">
+    <div class="max-w-3xl m-auto">
       <Announcement />
       <Shows />
       <Videos />
@@ -27,6 +27,7 @@ const settings = await getSettings();
       <Contact />
     </div>
   </main>
+  <Footer />
 </Layout>
 
 <style></style>

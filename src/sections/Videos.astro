@@ -1,25 +1,24 @@
 ---
-import { getVideos } from '../api/queries';
-import SectionHeading from '../components/SectionHeading.astro';
+import { getVideos } from "../api/queries";
+import SectionHeading from "../components/SectionHeading.astro";
+import Section from "../components/Section.astro";
 
 const videos = (await getVideos())[0];
 ---
 
-<section id="videos">
-  <div class="grid px-4">
-    <SectionHeading>{videos.headline}</SectionHeading>
+<Section id="videos">
+  <SectionHeading>{videos.headline}</SectionHeading>
+  <div class="grid gap-4">
     {
       videos.videoIds.map((id) => (
-        <div class="my-4">
-          <iframe
-            style="width: 100%; aspect-ratio: 16/9"
-            src={`https://www.youtube.com/embed/${id}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          />
-        </div>
+        <iframe
+          style="width: 100%; aspect-ratio: 16/9"
+          src={`https://www.youtube.com/embed/${id}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
       ))
     }
   </div>
-</section>
+</Section>

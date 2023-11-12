@@ -1,0 +1,42 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="flex w-full py-8 text-white bg-gray-950">
+  <div
+    class="m-auto grid w-full max-w-3xl md:flex md:justify-between justify-center gap-8"
+  >
+    <nav class="order-1 flex items-center justify-center md:order-2">
+      <ul class="flex gap-4 text-4xl">
+        <li>
+          <a href="https://www.facebook.com/chaosbay">
+            <i class="fa-brands fa-facebook hover:text-blue-600"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/user/Chaosbay">
+            <i class="fa-brands fa-youtube hover:text-red-600"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/chaosbayofficial">
+            <i class="fa-brands fa-instagram hover:text-pink-500"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="order-2 md:order-1 text-center md:text-left">
+      <ul>
+        <li>
+          <a href="/imprint" class="block py-1 hover:underline">Impressum</a>
+        </li>
+        <li>
+          <h3 class="py-1">© {year} Chaosbay</h3>
+        </li>
+        <li>
+          <h3 class="py-1">Page By: Jonas Kemmer</h3>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>
