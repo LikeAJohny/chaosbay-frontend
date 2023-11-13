@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      body: ["Roboto Regular", "Arial sans-serif"],
+      body: ["Coolvetica Condensed RG", "Arial sans-serif"],
       headline: ["Bebas Neue", "Arial Black sans-serif"],
     },
     extend: {
