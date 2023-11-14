@@ -11,7 +11,7 @@
 <style>
   button {
     padding: 1px;
-    background-color: #23262d;
+    background-color: #111;
     background-image: none;
     background-size: 400%;
     border-radius: 7px;
@@ -27,7 +27,7 @@
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
     color: white;
-    background-color: #23262d;
+    background-color: #111;
     opacity: 0.8;
   }
 
