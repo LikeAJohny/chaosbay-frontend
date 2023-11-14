@@ -3,7 +3,18 @@
 ---
 
 <h1
-  class="mb-8 text-5xl tracking-widest font-headline font-bold uppercase underline decoration-2 text-primary-color underline-offset-12 decoration-secondary-color"
+  class="relative max-w-max mb-8 text-5xl font-bold uppercase tracking-widest font-headline text-primary-color underline-offset-12 decoration-secondary-color"
 >
-  <slot />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <slot />
 </h1>
+
+<style>
+  h1:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: min(calc(100% + 5rem), calc(100dvw - 2rem));
+    border: 1px solid var(--secondary-color);
+  }
+</style>
