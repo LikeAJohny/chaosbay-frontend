@@ -4,19 +4,20 @@ import Button from "../components/Button.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { desktopImage } from "../lib/image-url";
 import Section from "../components/Section.astro";
+import { PortableText } from "astro-portabletext";
 
-const announcement = (await getAnnouncements())[0];
+const schema = await getAnnouncements();
 ---
 
 <Section id="announcement">
   <div class="grid gap-4">
-    <img src={desktopImage(announcement.image)} alt="Announcement Image" />
+    <img src={desktopImage(schema.image)} alt="Announcement Image" />
     <div>
-      <SectionHeading>{announcement.heading}</SectionHeading>
-      <p class="text-amber-50 text-lg">{announcement.text}</p>
+      <SectionHeading>{schema.heading}</SectionHeading>
+      <PortableText class="text-white text-lg" value={schema.richText} />
     </div>
     <div class="flex justify-end">
-      <Button>Announcement Link &rarr;</Button>
+      <Button><a href={schema.link}>{schema.linkTitle} &rarr;</a></Button>
     </div>
   </div>
 </Section>

@@ -13,8 +13,9 @@ export async function getSettings(): Promise<SettingsSchema[]> {
 
 export async function getAnnouncements(): Promise<AnnouncementsSchema> {
   const query = `*[_type == 'announcement']`;
+  const schema = await sanityClient.fetch<AnnouncementsSchema[]>(query);
 
-  return await sanityClient.fetch(query);
+  return schema[0];
 }
 
 export async function getShows() {

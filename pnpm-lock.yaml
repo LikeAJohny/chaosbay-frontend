@@ -20,6 +20,9 @@ dependencies:
   astro:
     specifier: ^3.4.3
     version: 3.4.3(typescript@5.2.2)
+  astro-portabletext:
+    specifier: ^0.9.6
+    version: 0.9.6
   svelte:
     specifier: ^4.2.2
     version: 4.2.2
@@ -902,6 +905,18 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@portabletext/toolkit@2.0.10:
+    resolution: {integrity: sha512-d+F9JvpnMEx7kd6saZ9OWA4U1Iwuokh6TOht7iqkfWU+0ivh9yM4v+b0Kpu+iiPcElicoabhtXol+yTvWJ1jDw==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@portabletext/types': 2.0.8
+    dev: false
+
+  /@portabletext/types@2.0.8:
+    resolution: {integrity: sha512-eiq9/kMX2bYezS4/kLFk3xNnruCFjCDdw6aYEv5ECHVKkYROiuLd3/AsP5d7tWF3+kPPy6tB0Wq8aqDG/URHGA==}
+    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
+    dev: false
+
   /@sanity/client@6.7.0:
     resolution: {integrity: sha512-nQGIuXXhdtP5FDsdBjuPRpeV6jOHU6Eq5xr52KyUUi29SgC5h5XUzRIu7d1sF8N+ONqTngYueFuB8JDsdSo1Ng==}
     engines: {node: '>=14.18'}
@@ -1308,6 +1323,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /astro-portabletext@0.9.6:
+    resolution: {integrity: sha512-v8YKRgjCpaxr94NefXRsH5ti9YoXqCrYah46epdJ4AdwtvIiLZA8vONFQjk5Y2cJ2UEEeGd+/8lo+tWmlo3aPw==}
+    dependencies:
+      '@portabletext/toolkit': 2.0.10
+      '@portabletext/types': 2.0.8
+    dev: false
 
   /astro@3.4.3(typescript@5.2.2):
     resolution: {integrity: sha512-6zcONz2FjX6GaAy6Mysie4gT8rH5QCBXyPjkuYZKiPdV+sXmDpLm44J2MpQwA3mHb8YQ35L5O4nNg09d4luQ7g==}

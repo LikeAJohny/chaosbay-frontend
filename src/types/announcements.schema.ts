@@ -1,7 +1,8 @@
 export type AnnouncementsSchema = {
   heading: string;
-  text: string;
+  richText: object;
   image: object;
   link: string;
+  linkTitle: string;
   video?: string;
 };
