@@ -10,12 +10,18 @@ const { logo, lettering } = Astro.props;
   menuBtn.addEventListener("click", () => {
     navBar.classList.toggle("hidden");
   });
+  const navLink = navBar.querySelectorAll("a");
+  navLink.forEach((link) => {
+    link.addEventListener("click", () => navBar.classList.toggle("hidden"));
+  });
 </script>
 
-<header class="fixed z-50 w-full bg-gray-950 font-headline text-xl">
+<header
+  class="fixed z-50 w-full text-xl shadow-sm bg-gray-950 font-headline shadow-secondary-color"
+>
   <nav class="w-full">
     <div
-      class="mx-auto flex max-w-screen-xl flex-wrap items-center md:justify-start md:gap-4 justify-between p-4"
+      class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4 md:justify-start md:gap-4"
     >
       <a href="/">
         <img src={desktopImage(logo)} class="mr-3 h-8" alt="Chaosbay Logo" />
@@ -27,7 +33,7 @@ const { logo, lettering } = Astro.props;
           alt="Chaosbay Lettering"
         />
       </a>
-      <div class="flex md:order-2 md:sr-only">
+      <div class="flex md:sr-only md:order-2">
         <!--<Button>Newsletter</Button>-->
         <button
           data-collapse-toggle="navbar-cta"
@@ -55,7 +61,7 @@ const { logo, lettering } = Astro.props;
         </button>
       </div>
       <div
-        class="hidden w-full items-center justify-between md:order-1 md:flex md:flex-grow md:justify-end md:w-auto"
+        class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto md:flex-grow md:justify-end"
         id="navbar-cta"
       >
         <ul
@@ -64,7 +70,7 @@ const { logo, lettering } = Astro.props;
           <li>
             <a
               href="/#announcement"
-              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color md:p-0 hover:underline"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color hover:underline md:p-0"
               aria-current="page"
             >
               Home
@@ -73,7 +79,7 @@ const { logo, lettering } = Astro.props;
           <li>
             <a
               href="/#shows"
-              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color md:p-0 hover:underline"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color hover:underline md:p-0"
               aria-current="page"
             >
               Tour
@@ -82,7 +88,7 @@ const { logo, lettering } = Astro.props;
           <li>
             <a
               href="/#merch"
-              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color md:p-0 hover:underline"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color hover:underline md:p-0"
             >
               Merch
             </a>
@@ -90,7 +96,7 @@ const { logo, lettering } = Astro.props;
           <li>
             <a
               href="/#videos"
-              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color md:p-0 hover:underline"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color hover:underline md:p-0"
             >
               Videos
             </a>
@@ -98,9 +104,17 @@ const { logo, lettering } = Astro.props;
           <li>
             <a
               href="/#contact"
-              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color md:p-0 hover:underline"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-white hover:text-primary-color hover:underline md:p-0"
             >
               Contact
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://mailchi.mp/831ff31984c8/chaosbay-newsletter"
+              class="block rounded border-gray-700 py-2 pr-4 pl-3 text-secondary-color hover:text-primary-color hover:underline md:p-0"
+            >
+              Sign Up &rarr;
             </a>
           </li>
         </ul>
