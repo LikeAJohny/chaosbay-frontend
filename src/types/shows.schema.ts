@@ -1,5 +1,6 @@
 export type ShowsSchema = {
   headline: string;
+  limit: number;
   shows: {
     name: string;
     location: string;

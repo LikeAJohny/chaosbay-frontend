@@ -1,8 +1,8 @@
----
+<script lang="ts">
+  export let clickHandler: () => void;
+</script>
 
----
-
-<button class="flex w-full text-xl">
+<button class="flex w-full text-xl" on:click={clickHandler}>
   <span>
     <slot />
   </span>
@@ -11,7 +11,7 @@
 <style>
   button {
     padding: 1px;
-    background-color: #111;
+    background-color: #23262d;
     background-image: none;
     background-size: 400%;
     border-radius: 7px;
@@ -27,7 +27,7 @@
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
     color: white;
-    background-color: #111;
+    background-color: #23262d;
     opacity: 0.8;
   }
 

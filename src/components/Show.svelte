@@ -1,14 +1,7 @@
----
-interface Props {
-  name: string;
-  location: string;
-  date: string;
-  ticketLink: string;
-}
-
-const { name, location, date, ticketLink } = Astro.props;
-const [year, month, day] = date.split("-");
----
+<script lang="ts">
+  export let name: string, location: string, date: string, ticketLink: string;
+  const [year, month, day] = date.split("-");
+</script>
 
 <li class="grid h-20 w-full justify-between text-gray-800 grid-cols-[5rem_1fr]">
   <div
@@ -26,10 +19,11 @@ const [year, month, day] = date.split("-");
     <div class="flex justify-between">
       <div class="grid items-center text-lg">{name}</div>
       <a
-        href="/"
         class="grid items-center text-lg text-primary-color hover:text-secondary-color"
-        >Buy Tickets &rarr;</a
+        href={ticketLink}
       >
+        Buy Tickets &rarr;
+      </a>
     </div>
   </div>
 </li>
@@ -43,11 +37,11 @@ const [year, month, day] = date.split("-");
         circle at 5rem 3%,
         rgba(255, 255, 224, 0) 0.4em,
         #ffffe0 0.5em
-      ),
-      radial-gradient(
+    ),
+    radial-gradient(
         circle at 5rem 97%,
         rgba(255, 255, 224, 0) 0.4em,
         #ffffe0 0.5em
-      );
+    );
   }
 </style>

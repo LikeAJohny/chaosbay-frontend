@@ -18,9 +18,10 @@ export async function getAnnouncements(): Promise<AnnouncementsSchema> {
 }
 
 export async function getShows() {
-  const query = `*[_type == 'shows'] | order(date desc)`;
+  const query = `*[_type == 'shows'] | order(date desc) { headline, limit, shows }`;
+  const schema = await sanityClient.fetch<ShowsSchema[]>(query);
 
-  return await sanityClient.fetch<ShowsSchema[]>(query);
+  return schema[0];
 }
 
 export async function getVideos(): Promise<VideosSchema> {
