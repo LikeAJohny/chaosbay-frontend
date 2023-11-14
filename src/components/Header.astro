@@ -15,20 +15,18 @@ const { logo, lettering } = Astro.props;
 <header class="fixed z-50 w-full bg-gray-950 font-headline text-xl">
   <nav class="w-full">
     <div
-      class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+      class="mx-auto flex max-w-screen-xl flex-wrap items-center md:justify-start md:gap-4 justify-between p-4"
     >
-      <div class="flex items-center gap-4">
-        <a href="/">
-          <img src={desktopImage(logo)} class="mr-3 h-8" alt="Chaosbay Logo" />
-        </a>
-        <a href="/">
-          <img
-            src={desktopImage(lettering)}
-            class="mr-3 h-6"
-            alt="Chaosbay Lettering"
-          />
-        </a>
-      </div>
+      <a href="/">
+        <img src={desktopImage(logo)} class="mr-3 h-8" alt="Chaosbay Logo" />
+      </a>
+      <a href="/">
+        <img
+          src={desktopImage(lettering)}
+          class="mr-3 h-6"
+          alt="Chaosbay Lettering"
+        />
+      </a>
       <div class="flex md:order-2 md:sr-only">
         <!--<Button>Newsletter</Button>-->
         <button
@@ -57,11 +55,11 @@ const { logo, lettering } = Astro.props;
         </button>
       </div>
       <div
-        class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
+        class="hidden w-full items-center justify-between md:order-1 md:flex md:flex-grow md:justify-end md:w-auto"
         id="navbar-cta"
       >
         <ul
-          class="mt-4 flex flex-col text-right font-medium md:space-x-8 md:mt-0 md:flex-row md:p-0"
+          class="flex flex-col text-right font-medium md:space-x-8 md:mt-0 md:flex-row md:p-0"
         >
           <li>
             <a
