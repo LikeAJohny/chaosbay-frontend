@@ -1,23 +1,24 @@
 <script lang="ts">
   import Show from "@components/Show.svelte";
   import Button from "@components/Button.svelte";
+  import type { ShowsSchema } from "@/types/shows.schema.ts";
 
-  export let upcoming: Show[], passed: Show[], limit: number;
+  export let upcoming: ShowsSchema['shows'], past: ShowsSchema['shows'], limit: number;
 
   let upcomingLimit = limit;
-  let passedLimit = limit;
+  let pastLimit = limit;
   $: upcomingShown = upcoming.slice(0, upcomingLimit);
-  $: passedShown = passed.slice(0, passedLimit);
+  $: pastShown = past.slice(0, pastLimit);
 
-  let list: "upcoming" | "passed" = "upcoming";
+  let list: "upcoming" | "past" = "upcoming";
 </script>
 
 <div class="mb-4 flex cursor-pointer gap-4 text-amber-50">
   <h2 class="text-xl {list === 'upcoming' ? 'text-primary-color' : ''}" on:click={() => list = 'upcoming'}>Upcoming</h2>
-  <h2 class="text-xl {list === 'passed' ? 'text-primary-color' : ''}" on:click={() => list = 'passed'}>Passed</h2>
+  <h2 class="text-xl {list === 'past' ? 'text-primary-color' : ''}" on:click={() => list = 'past'}>Past</h2>
 </div>
 {#if list === 'upcoming'}
-  <ul class="text-white w-full list-none grid md:grid-cols-[repeat(2,49%)] gap-4 mb-6">
+  <ul class="text-white w-full list-none grid md:grid-cols-[repeat(2,1fr)] gap-4 mb-6">
     {#each upcomingShown as show}
       <Show {...show} />
     {/each}
@@ -26,13 +27,13 @@
     <Button clickHandler={() => upcomingLimit += limit}>Load More</Button>
   {/if}
 {/if}
-{#if list === 'passed'}
+{#if list === 'past'}
   <ul class="w-full list-none text-white">
-    {#each passedShown as show}
+    {#each pastShown as show}
       <Show {...show} />
     {/each}
   </ul>
-  {#if passed.length > passedLimit}
-    <Button clickHandler={() => passedLimit += limit}>Load More</Button>
+  {#if past.length > pastLimit}
+    <Button clickHandler={() => pastLimit += limit}>Load More</Button>
   {/if}
 {/if}

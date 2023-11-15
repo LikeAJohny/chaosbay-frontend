@@ -7,10 +7,10 @@ import ShowList from "../components/ShowList.svelte";
 const today = new Date();
 const schema = await getShows();
 const upcoming = schema.shows.filter((show) => new Date(show.date) >= today);
-const passed = schema.shows.filter((show) => new Date(show.date) < today);
+const past = schema.shows.filter((show) => new Date(show.date) < today);
 ---
 
 <Section id="shows">
   <SectionHeading>{schema.headline}</SectionHeading>
-  <ShowList {upcoming} {passed} limit={schema.limit} client:only="svelte" />
+  <ShowList {upcoming} {past} limit={schema.limit} client:only="svelte" />
 </Section>

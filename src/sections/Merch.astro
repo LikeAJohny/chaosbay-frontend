@@ -10,7 +10,7 @@ const schema = (await getMerch())[0];
 
 <Section id="merch">
   <SectionHeading>Merch</SectionHeading>
-  <div class="grid md:grid-cols-[repeat(2,50%)] gap-8">
+  <div class="grid md:grid-cols-[repeat(2,1fr)] gap-4">
     {
       schema.merchItems.map((item) => (
         <div>
