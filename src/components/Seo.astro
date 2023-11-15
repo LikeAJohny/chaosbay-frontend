@@ -1,0 +1,163 @@
+---
+import { SeoSchema } from "../types/seo.schema";
+import { iconImage, seoImage } from "../lib/image-url";
+
+interface Props {
+  seo: SeoSchema;
+  themeColor: string;
+}
+
+const { seo, themeColor } = Astro.props;
+
+const manifest = {
+  name: "Chaosbay",
+  theme_color: themeColor,
+  background_color: "#111827",
+  display: "standalone",
+  icons: [
+    {
+      src: iconImage(seo.pageIcon, 192, 192),
+      size: "192x192",
+      type: "image/png",
+    },
+    {
+      src: iconImage(seo.pageIcon, 512, 512),
+      size: "512x512",
+      type: "image/png",
+    },
+  ],
+};
+
+const jsonData = {
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  name: "Chaosbay",
+  description: seo.searchResultDescription,
+  url: "https://chaosbay.com",
+  image: seoImage(seo.socialPreviewImage),
+  location: seo.location,
+  album: {
+    "@type": "MusicAlbum",
+    albumProductionType: "Studio Album",
+    albumReleaseType: seo.currentRelease.type,
+    genre: seo.currentRelease.genre,
+    name: seo.currentRelease.name,
+    numTracks: seo.currentRelease.tracks,
+    url: seo.currentRelease.url,
+    image: seoImage(seo.currentRelease.cover),
+  },
+};
+const sd = JSON.stringify(jsonData);
+---
+
+<!-- General -->
+<meta charSet="utf-8" />
+<title>{`${seo.title} | ${seo.additionalTitle}`}</title>
+<meta name="description" content={seo.searchResultDescription} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noodp,noydir" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Opengraph -->
+<meta property="og:url" content="https://www.chaosbay.com" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.searchResultDescription} />
+<meta property="og:image" content={seoImage(seo.socialPreviewImage)} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="920" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content={seoImage(seo.socialPreviewImage)} />
+
+<!-- Mobile -->
+<meta name="apple-mobile-web-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-abb-title" content="Chaosbay" />
+<link rel="manifest" href="" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link
+  rel="apple-touch-icon"
+  sizes="57x57"
+  href={iconImage(seo.pageIcon, 57, 57)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="60x60"
+  href={iconImage(seo.pageIcon, 60, 60)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="72x72"
+  href={iconImage(seo.pageIcon, 72, 72)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="76x76"
+  href={iconImage(seo.pageIcon, 76, 76)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="114x114"
+  href={iconImage(seo.pageIcon, 114, 114)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="120x120"
+  href={iconImage(seo.pageIcon, 120, 120)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="144x144"
+  href={iconImage(seo.pageIcon, 144, 144)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="152x152"
+  href={iconImage(seo.pageIcon, 152, 152)}
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href={iconImage(seo.pageIcon, 180, 180)}
+/>
+<link
+  rel="icon"
+  type="image/png"
+  href={iconImage(seo.pageIcon, 16, 16)}
+  sizes="16x16"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  href={iconImage(seo.pageIcon, 32, 32)}
+  sizes="32x32"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  href={iconImage(seo.pageIcon, 96, 96)}
+  sizes="96x96"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  href={iconImage(seo.pageIcon, 192, 192)}
+  sizes="192x192"
+/>
+
+<script define:vars={{ manifest }} client:visible>
+  const blob = new Blob([JSON.stringify(manifest)], {
+    type: "application/json",
+  });
+  const manifestUrl = URL.createObjectURL(blob);
+  const manifestLink: HTMLLinkElement = document.querySelector(
+    'link[rel="manifest"]',
+  );
+  manifestLink.href = manifestUrl;
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={sd} />

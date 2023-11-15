@@ -8,16 +8,19 @@ import Videos from "../sections/Videos.astro";
 import Merch from "../sections/Merch.astro";
 import Contact from "../sections/Contact.astro";
 import Footer from "../sections/Footer.astro";
+import { getSeo } from "../api/queries";
 
 const settings = await getSettings();
+const seo = await getSeo();
 ---
 
 <Layout
   title="Chaosbay | Progressive Metalcore"
-  primaryColor={settings[0].primaryColor.hex}
-  secondaryColor={settings[0].secondaryColor.hex}
+  primaryColor={settings.primaryColor.hex}
+  secondaryColor={settings.secondaryColor.hex}
+  seo={seo}
 >
-  <Header logo={settings[0].logo} lettering={settings[0].lettering} />
+  <Header logo={settings.logo} lettering={settings.lettering} />
   <main class="py-16">
     <div class="max-w-3xl m-auto">
       <Announcement />

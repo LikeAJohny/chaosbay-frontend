@@ -4,11 +4,13 @@ import type { AnnouncementsSchema } from "@/types/announcements.schema.ts";
 import type { VideosSchema } from "@/types/videos.schema.ts";
 import type { MerchSchema } from "@/types/merch.schema.ts";
 import type { SettingsSchema } from "@/types/settings.schema.ts";
+import type { SeoSchema } from "@/types/seo.schema.ts";
 
-export async function getSettings(): Promise<SettingsSchema[]> {
+export async function getSettings(): Promise<SettingsSchema> {
   const query = `*[_type == 'settings']`;
+  const schema = await sanityClient.fetch(query);
 
-  return await sanityClient.fetch(query);
+  return schema[0];
 }
 
 export async function getAnnouncements(): Promise<AnnouncementsSchema> {
@@ -35,4 +37,11 @@ export async function getMerch(): Promise<MerchSchema[]> {
   const query = `*[_type == 'merch']`;
 
   return await sanityClient.fetch(query);
+}
+
+export async function getSeo(): Promise<SeoSchema> {
+  const query = `*[_type == 'seo']`;
+  const schema = await sanityClient.fetch(query);
+
+  return schema[0];
 }

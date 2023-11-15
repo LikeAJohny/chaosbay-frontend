@@ -1,23 +1,22 @@
 ---
 import Background from "../components/Background.astro";
+import Seo from "../components/Seo.astro";
+import { SeoSchema } from "../types/seo.schema";
+
 interface Props {
   title: string;
   primaryColor: string;
   secondaryColor: string;
+  seo: SeoSchema;
 }
 
-const { title, primaryColor, secondaryColor } = Astro.props;
+const { title, primaryColor, secondaryColor, seo } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="bg-gray-900 bg-opacity-95">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <Seo seo={seo} themeColor={primaryColor} />
     <script
       src="https://kit.fontawesome.com/162ec1a8cf.js"
       crossorigin="anonymous"></script>
@@ -25,35 +24,35 @@ const { title, primaryColor, secondaryColor } = Astro.props;
   <body class="font-body">
     <Background />
     <slot />
+    <style
+      is:global
+      define:vars={{
+        "primary-color": primaryColor,
+        "secondary-color": secondaryColor,
+      }}
+    >
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          var(--secondary-color),
+          var(--primary-color) 30%,
+          white 60%
+        );
+        scroll-behavior: smooth;
+      }
+
+      @font-face {
+        font-family: "Bebas Neue";
+        src: url("../assets/fonts/BebasNeue-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: "Coolvetica Condensed RG";
+        src: url("../assets/fonts/coolvetica-condensed-rg.otf");
+      }
+    </style>
   </body>
 </html>
-<style
-  is:global
-  define:vars={{
-    "primary-color": primaryColor,
-    "secondary-color": secondaryColor,
-  }}
->
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      var(--secondary-color),
-      var(--primary-color) 30%,
-      white 60%
-    );
-    scroll-behavior: smooth;
-  }
-
-  @font-face {
-    font-family: "Bebas Neue";
-    src: url("../assets/fonts/BebasNeue-Regular.ttf");
-  }
-
-  @font-face {
-    font-family: "Coolvetica Condensed RG";
-    src: url("../assets/fonts/coolvetica-condensed-rg.otf");
-  }
-</style>

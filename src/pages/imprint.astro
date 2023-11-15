@@ -3,16 +3,19 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import { getSettings } from "@api/queries";
 import SectionHeading from "../components/SectionHeading.astro";
+import { getSeo } from "../api/queries";
 
 const settings = await getSettings();
+const seo = await getSeo();
 ---
 
 <Layout
   title="Chaosbay | Progressive Metalcore"
-  primaryColor={settings[0].primaryColor.hex}
-  secondaryColor={settings[0].secondaryColor.hex}
+  primaryColor={settings.primaryColor.hex}
+  secondaryColor={settings.secondaryColor.hex}
+  seo={seo}
 >
-  <Header logo={settings[0].logo} lettering={settings[0].lettering} />
+  <Header logo={settings.logo} lettering={settings.lettering} />
   <main class="grid justify-center py-4 max-w-3xl m-auto">
     <div class="h-16"></div>
     <section id="imprint" class="px-4 text-amber-50">
