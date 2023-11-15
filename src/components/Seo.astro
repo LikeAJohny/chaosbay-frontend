@@ -148,14 +148,12 @@ const sd = JSON.stringify(jsonData);
   sizes="192x192"
 />
 
-<script define:vars={{ manifest }} client:visible>
+<script define:vars={{ manifest }} client:load>
   const blob = new Blob([JSON.stringify(manifest)], {
     type: "application/json",
   });
   const manifestUrl = URL.createObjectURL(blob);
-  const manifestLink: HTMLLinkElement = document.querySelector(
-    'link[rel="manifest"]',
-  );
+  const manifestLink = document.querySelector('link[rel="manifest"]');
   manifestLink.href = manifestUrl;
 </script>
 
