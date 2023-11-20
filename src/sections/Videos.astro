@@ -2,6 +2,7 @@
 import { getVideos } from "../api/queries";
 import SectionHeading from "../components/SectionHeading.astro";
 import Section from "../components/Section.astro";
+import { videoIdFromUrl } from "../lib/video-urls";
 
 const schema = await getVideos();
 ---
@@ -10,10 +11,10 @@ const schema = await getVideos();
   {schema.headline && <SectionHeading>{schema.headline}</SectionHeading>}
   <div class="grid gap-4">
     {
-      schema.videoIds.map((id) => (
+      schema.videos.map((url) => (
         <iframe
           style="width: 100%; aspect-ratio: 16/9"
-          src={`https://www.youtube.com/embed/${id}`}
+          src={`https://www.youtube.com/embed/${videoIdFromUrl(url)}`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen

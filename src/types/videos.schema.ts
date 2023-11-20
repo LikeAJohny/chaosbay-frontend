@@ -1,4 +1,4 @@
 export type VideosSchema = {
   headline: string;
-  videoIds: string[];
+  videos: string[];
 };

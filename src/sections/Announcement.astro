@@ -5,8 +5,10 @@ import SectionHeading from "../components/SectionHeading.astro";
 import { desktopImage } from "../lib/image-url";
 import Section from "../components/Section.astro";
 import { PortableText } from "astro-portabletext";
+import { videoIdFromUrl } from "../lib/video-urls";
 
 const schema = await getAnnouncements();
+const query = new URLSearchParams(schema.video.split("?")[1]);
 ---
 
 <Section id="announcement">
@@ -14,6 +16,17 @@ const schema = await getAnnouncements();
     {
       schema.image && (
         <img src={desktopImage(schema.image)} alt="Announcement Image" />
+      )
+    }
+    {
+      schema.video && !schema.image && (
+        <iframe
+          style="width: 100%; aspect-ratio: 16/9"
+          src={`https://www.youtube.com/embed/${videoIdFromUrl(schema.video)}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
       )
     }
     <div>
