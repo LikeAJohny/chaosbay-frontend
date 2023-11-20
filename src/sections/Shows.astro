@@ -11,6 +11,6 @@ const past = schema.shows.filter((show) => new Date(show.date) < today);
 ---
 
 <Section id="shows">
-  <SectionHeading>{schema.headline}</SectionHeading>
+  {schema.headline && <SectionHeading>{schema.headline}</SectionHeading>}
   <ShowList {upcoming} {past} limit={schema.limit} client:only="svelte" />
 </Section>

@@ -29,14 +29,16 @@ export async function getShows() {
 
 export async function getVideos(): Promise<VideosSchema> {
   const query = `*[_type == 'videos']`;
+  const schema = await sanityClient.fetch<VideosSchema[]>(query);
 
-  return await sanityClient.fetch(query);
+  return schema[0];
 }
 
-export async function getMerch(): Promise<MerchSchema[]> {
+export async function getMerch(): Promise<MerchSchema> {
   const query = `*[_type == 'merch']`;
+  const schema = await sanityClient.fetch<MerchSchema[]>(query);
 
-  return await sanityClient.fetch(query);
+  return schema[0];
 }
 
 export async function getSeo(): Promise<SeoSchema> {

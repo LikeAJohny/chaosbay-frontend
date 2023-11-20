@@ -3,14 +3,14 @@ import { getVideos } from "../api/queries";
 import SectionHeading from "../components/SectionHeading.astro";
 import Section from "../components/Section.astro";
 
-const videos = (await getVideos())[0];
+const schema = await getVideos();
 ---
 
 <Section id="videos">
-  <SectionHeading>{videos.headline}</SectionHeading>
+  {schema.headline && <SectionHeading>{schema.headline}</SectionHeading>}
   <div class="grid gap-4">
     {
-      videos.videoIds.map((id) => (
+      schema.videoIds.map((id) => (
         <iframe
           style="width: 100%; aspect-ratio: 16/9"
           src={`https://www.youtube.com/embed/${id}`}

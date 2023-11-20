@@ -11,9 +11,13 @@ const schema = await getAnnouncements();
 
 <Section id="announcement">
   <div class="grid gap-4">
-    <img src={desktopImage(schema.image)} alt="Announcement Image" />
+    {
+      schema.image && (
+        <img src={desktopImage(schema.image)} alt="Announcement Image" />
+      )
+    }
     <div>
-      <SectionHeading>{schema.heading}</SectionHeading>
+      {schema.heading && <SectionHeading>{schema.heading}</SectionHeading>}
       <PortableText class="text-white text-lg" value={schema.richText} />
     </div>
     <div class="flex justify-end">
