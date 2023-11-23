@@ -34,7 +34,9 @@ const query = new URLSearchParams(schema.video.split("?")[1]);
       <PortableText class="text-white text-lg" value={schema.richText} />
     </div>
     <div class="flex justify-end">
-      <Button><a href={schema.link}>{schema.linkTitle} &rarr;</a></Button>
+      <Button>
+        <a class="block w-full" href={schema.link}>{schema.linkTitle} &rarr;</a>
+      </Button>
     </div>
   </div>
 </Section>

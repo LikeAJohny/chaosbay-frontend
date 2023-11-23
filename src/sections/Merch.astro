@@ -16,7 +16,9 @@ const schema = await getMerch();
         <div>
           <img src={desktopImage(item.image)} alt={item.name} class="mb-4" />
           <Button class="w-full">
-            <a href={item.link}>Shop Now</a>
+            <a class="block w-full" href={item.link}>
+              Shop Now
+            </a>
           </Button>
         </div>
       ))
