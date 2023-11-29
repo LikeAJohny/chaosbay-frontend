@@ -28,7 +28,7 @@
   {/if}
 {/if}
 {#if list === 'past'}
-  <ul class="w-full list-none text-white">
+  <ul class="text-white w-full list-none grid md:grid-cols-[repeat(2,1fr)] gap-4 mb-6">
     {#each pastShown as show}
       <Show {...show} />
     {/each}
