@@ -3,7 +3,7 @@
   const [year, month, day] = date.split("-");
 </script>
 
-<li class="grid h-20 w-full justify-between text-gray-800 grid-cols-[5rem_1fr]">
+<li class="grid w-full justify-between text-gray-800 grid-cols-[5rem_1fr]">
   <div
     class="grid aspect-square w-20 auto-rows-fr justify-center justify-items-center border-r border-dashed border-gray-800 px-2 text-center"
   >
@@ -12,12 +12,14 @@
     </div>
     <div class="grid items-center text-lg">{year}</div>
   </div>
-  <div class="grid auto-rows-fr px-3 text-left">
+  <div class="grid px-3 text-left grid-rows-[40px_40px]">
     <div class="grid items-center border-b border-gray-600 text-2xl uppercase">
       {location}
     </div>
     <div class="flex justify-between">
-      <div class="grid items-center text-lg">{name}</div>
+      <div class="overflow-hidden overflow-ellipsis whitespace-nowrap text-lg flex-[1] leading-[40px]">
+        {name}
+      </div>
       <a
         class="grid items-center text-lg text-amber-600 hover:text-amber-800"
         href={ticketLink}
