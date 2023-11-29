@@ -19,7 +19,7 @@
     <div class="flex justify-between">
       <div class="grid items-center text-lg">{name}</div>
       <a
-        class="grid items-center text-lg text-primary-color hover:text-secondary-color"
+        class="grid items-center text-lg text-amber-600 hover:text-amber-800"
         href={ticketLink}
       >
         Buy Tickets &rarr;
