@@ -17,7 +17,7 @@
       {location}
     </div>
     <div class="flex justify-between">
-      <div class="overflow-hidden overflow-ellipsis whitespace-nowrap text-lg flex-[1] leading-[40px]">
+      <div class="overflow-hidden overflow-ellipsis whitespace-nowrap text-lg flex-[1] leading-[40px]" title={name}>
         {name}
       </div>
       <a
