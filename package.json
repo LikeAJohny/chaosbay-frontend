@@ -3,7 +3,7 @@
   "type": "module",
   "description": "Frontend of the Chaosbay Website",
   "author": "Jonas Kemmer <likeajohny@users.noreply.github.com>",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
