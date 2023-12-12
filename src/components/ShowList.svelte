@@ -2,8 +2,16 @@
   import Show from "@components/Show.svelte";
   import Button from "@components/Button.svelte";
   import type { ShowsSchema } from "@/types/shows.schema.ts";
+  import { onMount } from "svelte";
 
-  export let upcoming: ShowsSchema['shows'], past: ShowsSchema['shows'], limit: number;
+  export let shows = ShowsSchema['shows'], limit: number;
+  let upcoming = [];
+  let past = [];
+
+  onMount(() => {
+    upcoming = shows.filter((show) => new Date(show.date) >= new Date());
+    past = shows.filter((show) => new Date(show.date) < new Date());
+  })
 
   let upcomingLimit = limit;
   let pastLimit = limit;

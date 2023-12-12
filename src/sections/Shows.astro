@@ -4,13 +4,10 @@ import SectionHeading from "../components/SectionHeading.astro";
 import Section from "../components/Section.astro";
 import ShowList from "../components/ShowList.svelte";
 
-const today = new Date();
 const schema = await getShows();
-const upcoming = schema.shows.filter((show) => new Date(show.date) >= today);
-const past = schema.shows.filter((show) => new Date(show.date) < today);
 ---
 
 <Section id="shows">
   {schema.headline && <SectionHeading>{schema.headline}</SectionHeading>}
-  <ShowList {upcoming} {past} limit={schema.limit} client:only="svelte" />
+  <ShowList shows={schema.shows} limit={schema.limit} client:only="svelte" />
 </Section>
