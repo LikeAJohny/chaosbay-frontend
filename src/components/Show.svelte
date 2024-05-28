@@ -1,14 +1,15 @@
 <script lang="ts">
-  export let name: string, location: string, date: string, ticketLink: string;
+  export let name: string, location: string, date: string, toDate: string | undefined, ticketLink: string;
   const [year, month, day] = date.split("-");
+  const [toYear, toMonth, toDay] = toDate?.split("-") || [];
 </script>
 
 <li class="grid w-full justify-between text-gray-800 grid-cols-[5rem_1fr]">
   <div
     class="grid aspect-square w-20 auto-rows-fr justify-center justify-items-center border-r border-dashed border-gray-800 px-2 text-center"
   >
-    <div class="grid items-center border-b border-gray-600 text-2xl">
-      {day}.{month}.
+    <div class={`grid items-center border-b border-gray-600 ${toMonth && toDay ? 'text-md' : 'text-2xl'}`}>
+      {day}.{month}. {toMonth && toDay ? ` - ${toDay}.${toMonth}` : ''}
     </div>
     <div class="grid items-center text-lg">{year}</div>
   </div>

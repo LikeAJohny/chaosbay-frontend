@@ -5,6 +5,7 @@ export type ShowsSchema = {
     name: string;
     location: string;
     date: string;
+    toDate?: string;
     ticketLink: string;
   }[];
 };
